@@ -13,7 +13,7 @@ namespace CommandList
             {
                 if (list.Count == 0)
                 {
-                    Console.WriteLine("(Listen er tom.)");
+                    Console.WriteLine("(Listen er tom)");
                 }
                 else
                 {
