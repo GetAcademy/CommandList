@@ -18,17 +18,17 @@ namespace CommandList
             list.Add("to");
             list.Add("tre");
 
-            var addCommand = new AddCommand(list);
-            var deleteCommand = new DeleteCommand(list);
-            var commands = new ICommand[] { addCommand, deleteCommand };
+            var commands = new ICommand[]
+            {
+                new AddCommand(list), 
+                new DeleteCommand(list),
+                new SortCommand(list),
+            };
 
             while (true)
             {
                 ShowList(list);
-
-                Console.WriteLine();
-                Console.WriteLine("+ => Legg til");
-                Console.WriteLine("- => Slett");
+                ShowMenu(commands);
 
                 Console.Write("Hva vil du gjøre? ");
                 var commandChar = Console.ReadLine()[0];
@@ -37,7 +37,6 @@ namespace CommandList
                 if (command != null)
                 {
                     command.Run();
-                    //command.Terje();
                 }
                 else
                 {
@@ -46,6 +45,15 @@ namespace CommandList
                     continue;
                 }
                 Console.Clear();
+            }
+        }
+
+        private static void ShowMenu(ICommand[] commands)
+        {
+            Console.WriteLine();
+            foreach (var cmd in commands)
+            {
+                Console.WriteLine($"{cmd.Key} => {cmd.Description}");
             }
         }
 
