@@ -2,22 +2,16 @@
 
 namespace CommandList
 {
-    class SortCommand : ICommand
+    class SortCommand : Command
     {
-        private List<string> _list;
-        public char Key { get; }
-        public string Description { get; }
-
         public SortCommand(List<string> list)
+        :base(list, "Sorter", 's')
         {
-            _list = list;
-            Key = 's';
-            Description = "Sorter";
         }
 
-        public void Run()
+        public override void Run()
         {
-            _list.Sort();
+            List.Sort();
         }
     }
 }

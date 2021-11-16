@@ -12,13 +12,14 @@ namespace CommandList
              * Command pattern
              * Interface
              */
+            //var x = new Command(null, null, 'a');
 
             var list = new List<string>();
             list.Add("en");
             list.Add("to");
             list.Add("tre");
 
-            var commands = new ICommand[]
+            var commands = new Command[]
             {
                 new AddCommand(list), 
                 new DeleteCommand(list),
@@ -48,7 +49,7 @@ namespace CommandList
             }
         }
 
-        private static void ShowMenu(ICommand[] commands)
+        private static void ShowMenu(Command[] commands)
         {
             Console.WriteLine();
             foreach (var cmd in commands)
